@@ -1,0 +1,27 @@
+# Use this sample for clues
+# of changes you need to make
+# to your official .ovpn files.
+
+# Required for alpine apk
+script-security 2
+up /etc/openvpn/up.sh
+down /etc/openvpn/down.sh
+auth-user-pass /tmp/cred
+
+# Rest of the config
+suppress-timestamps
+client
+verb 1
+connect-retry-max 5
+resolv-retry 5
+dev tun
+remote ..
+verify ..
+cipher ..
+auth-nocache
+
+<ca>
+-----BEGIN CERTIFICATE-----
+..
+-----END CERTIFICATE-----
+</ca>

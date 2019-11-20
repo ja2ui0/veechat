@@ -1,0 +1,14 @@
+#!/bin/sh
+
+read -p "Username: " user
+read -p "Pass+OTP: " -r -s pass
+
+echo $user > /tmp/cred
+echo $pass >> /tmp/cred
+
+openvpn --config /etc/openvpn/client.ovpn --daemon
+rm /tmp/cred
+echo "Waiting 15s for VPN connection..."
+sleep 15
+weechat
+
